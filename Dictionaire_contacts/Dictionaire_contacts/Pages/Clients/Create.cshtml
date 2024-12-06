@@ -1,0 +1,68 @@
+﻿@page
+@model Dictionaire_contacts.Pages.Clients.CreateModel
+@{
+}
+
+<style>
+    body {
+        background-color: #e2f8fe; 
+    }
+</style>
+
+
+<br>
+<h2> New Contact</h2>
+@if (!string.IsNullOrEmpty(Model.errorMessage))
+{
+    <div class="row mb-3">
+        <div class="col-sm-9">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@Model.errorMessage</strong>
+            </div>
+        </div>
+    </div>
+}
+<form method="POST" enctype="multipart/form-data">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Name" value="@Model.contact.Name">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Telephone</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Telephone" value="@Model.contact.Telephone">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Description" value="@Model.contact.Descr">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Image</label>
+        <div class="col-sm-6">
+            <input type="file" class="form-control" name="Image">
+        </div>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.successMessage))
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-danger">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Clients" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
